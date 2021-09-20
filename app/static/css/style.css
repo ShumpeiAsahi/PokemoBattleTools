@@ -1,0 +1,18 @@
+.ui-widget-content {
+    background: #ffe0e0;
+    color: #a05b54;
+}
+
+.ui-widget.ui-widget-content {
+    border: 1px solid #cca285;
+}
+
+.ui-widget-content .ui-state-active {
+    border: 1px solid #ff0000;
+    background: #f58b8b;
+}
+
+.ui-menu .ui-menu-item {
+    border-bottom: 2px dotted #cca285;
+    list-style: none;
+}
