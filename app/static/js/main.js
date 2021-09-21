@@ -97,67 +97,17 @@ $('.my_btn').on('click', function(){
       data: JSON.stringify({
         name: poke_name
         })
-    })
-  .done(function( data ) {
-    console.log(data);
-    poke_no = data["no"]
-    console.log(poke_no);
-    console.log(id);
-    const img_id = id + "_img";
-    console.log(img_id);
-    src = "../static/img/icons/"+`${poke_no}`+".png";
-    console.log(src);
-    $("#"+`${img_id}`).attr("src",src);
+      })
+    .done(function( data ) {
+      console.log(data); //ポケモンのNo,name,typeを取得
+      poke_no = data["no"];
+      const img_id = id + "_img";
+      const src = "../static/img/icons/"+`${poke_no}`+".png";
+      $("#"+`${img_id}`).attr("src",src);
 
-    })
-  .fail(function(jqXHR, textStatus ,errorThrown) {
-      //通信失敗時の処理
-      console.log("失敗"); //失敗メッセージをHTMLで表示
-    });
-    
-   
-
-});
-//Ajaxの処理
-$(function(){
-    $('form').submit(function(e) {
-        //Formのデフォルトの操作をキャンセル
-        e.preventDefault();
-
-        //Formの入力値を格納
-        var form_data =$('form').serialize();
-
-        //Formのデータをajaxにより送信する
-        $.ajax ({
-            url:'regi.php',
-            type: 'POST',
-            data: form_data,
-            timeout:600000,
-            beforesend: function(xhr, settings){
-                //リクエスト送信前にボタンを非活性化する
-                $('button').attr('dispalyed',true);
-                //モーダルウィンドウを表示
-                $('#modal').fadeIn();
-            },
-            complete: function(xhr, textStatus){
-                //モーダルウィンドウを消す
-                $('#modal').fadeOut();
-                //ボタンの非活性を解除
-                $('button').attr('dispalyed',false);
-            }
-        }).done(function(data,textStatus,jqXHR) {
-            //通信成功時の処理
-            //$('form')[0].reset();
-            
-            //相手のポケモンの情報リセット
-            for (let i = 1; i <7; i++){
-              var textForm = document.getElementById('en_poke' + i);
-              textForm.value = '';
-            }
-            $('#result').text(data); //phpから返ってきたメッセージをHTMLで表示
-        }).fail(function(jqXHR, textStatus ,errorThrown) {
-            //通信失敗時の処理
-            $('#result').text('送信できませんでした'); //失敗メッセージをHTMLで表示
-        })
-    });
-});
+      })
+    .fail(function(jqXHR, textStatus ,errorThrown) {
+        //通信失敗時の処理
+        console.log("失敗"); //失敗メッセージをHTMLで表示
+      });
+  });
