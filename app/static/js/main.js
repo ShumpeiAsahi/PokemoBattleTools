@@ -105,9 +105,21 @@ $('.my_btn').on('click', function(){
       const src = "../static/img/icons/"+`${poke_no}`+".png";
       $("#"+`${img_id}`).attr("src",src);
 
+      //ポケモンの情報を吹き出しに格納
+      $("#"+`${id}`+"_info").text(`${data["name"]}`+" タイプ："+`${data["types"]}`);
+
       })
     .fail(function(jqXHR, textStatus ,errorThrown) {
         //通信失敗時の処理
         console.log("失敗"); //失敗メッセージをHTMLで表示
       });
   });
+
+  //ポケモンの情報を表示する
+  $(function () {
+    $('.poke_img').click(function () {
+        const img_id =  $(this).attr("id"); //imgのID取得
+        $(".info").hide();
+        $("#" + `${img_id}`+"_info").toggle();
+    });
+});
