@@ -101,12 +101,13 @@ $('.my_btn').on('click', function(){
     .done(function( data ) {
       console.log(data); //ポケモンのNo,name,typeを取得
       poke_no = data["no"];
-      const img_id = id + "_img";
+      const img_id = id.replace("_input","");
+      console.log(img_id);
       const src = "../static/img/icons/"+`${poke_no}`+".png";
       $("#"+`${img_id}`).attr("src",src);
 
       //ポケモンの情報を吹き出しに格納
-      $("#"+`${id}`+"_info").text(`${data["name"]}`+" タイプ："+`${data["types"]}`);
+      $("#"+`${img_id}`+"_output").text(`${data["name"]}`+" タイプ："+`${data["types"]}`);
 
       })
     .fail(function(jqXHR, textStatus ,errorThrown) {

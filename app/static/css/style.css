@@ -17,6 +17,9 @@
     list-style: none;
 }
 
+.ui-helper-hidden-accessible {
+	display: none;
+}
 .poke_info {
     display: none;
     position: absolute;
