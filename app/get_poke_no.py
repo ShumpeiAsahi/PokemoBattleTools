@@ -14,6 +14,8 @@ def get_poke_no():
 
         i = next((i for i in data if i['name'] == req), None)
         if i:
-            print(i['no'])
-            print(i)
+            print(i['abilities'])
+            set(i['abilities'])
+            print(i['abilities'])
+
     return json.dumps(i)

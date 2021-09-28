@@ -107,7 +107,7 @@ $('.my_btn').on('click', function(){
       $("#"+`${img_id}`).attr("src",src);
 
       //ポケモンの情報を吹き出しに格納
-      $("#"+`${img_id}`+"_output").text(`${data["name"]}`+" タイプ："+`${data["types"]}`);
+      $("#"+`${img_id}`+"_output").text(`${data["name"]}`+" タイプ："+`${data["types"]}`+" 特性：" + `${data["abilities"]}` + " 種族値" + `${data["base_stats"]}`);
 
       })
     .fail(function(jqXHR, textStatus ,errorThrown) {
