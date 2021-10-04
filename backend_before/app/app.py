@@ -4,12 +4,13 @@ from app import serch_poke_name
 from app import get_poke_no
 
 #Flaskオブジェクトの生成
-app = Flask(__name__)
+app = Flask(__name__, static_folder='.../vue/dist/static', template_folder='.../vue/dist')
 
 #「/」へアクセスがあった場合に、「index.html」を返す
-@app.route("/")
-def index():
-    return render_template("index.html")
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def index(path):
+    return render_template('index.html')
 
 @app.route("/serch_poke_name" ,methods=["POST"])
 def serch():
